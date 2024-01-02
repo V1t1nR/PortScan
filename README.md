@@ -10,30 +10,45 @@ Para instalar as dependências e configurar o ambiente, siga as instruções aba
 
 Clone o repositório:
 
-git clone https://github.com/V1t1nR/PortScan.git
-
-cd seu_repositorio
+        git clone https://github.com/V1t1nR/PortScan.git
+      
+        cd seu_repositorio
 
 Torne o script install_dependencies.sh executável:
 
-chmod +x install_dependencies.sh
+        chmod +x install_dependencies.sh
 
 Execute o script install_dependencies.sh para instalar as dependências necessárias:
 
-./install_dependencies.sh
+        ./install_dependencies.sh
 
 
 Uso
 Após a instalação, o script PortScan.py pode ser utilizado diretamente do terminal como um comando:
 
-Copy code
-portscan <endereço IP> --port <número da porta> --startport <porta inicial> --endport <porta final> -v
+        sudo portscan <endereço IP> --port <número da porta> --startport <porta inicial> --endport <porta final> -v
+
+Ou utilize o seguinte comando para abrir a aba de guia
+
+        sudo portscan --help
+Ou
+
+        sudo portscan -h
 
 Opções de Comando:
+
 <endereço IP>: Endereço IP do alvo para a varredura de portas.
+
+
 --port <número da porta>: Especifica uma única porta para varrer (opcional).
+
+
 --startport <porta inicial>: Define a porta inicial para um intervalo de varredura (padrão: 1).
+
+
 --endport <porta final>: Define a porta final para um intervalo de varredura (padrão: 1024).
+
+
 -v, --verbose: Ativa o modo detalhado (verbose), mostrando informações detalhadas sobre cada porta escaneada.
 
 
