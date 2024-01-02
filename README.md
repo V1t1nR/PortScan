@@ -1,4 +1,5 @@
 PortScan Script
+
 Este repositório contém PortScan.py, um script de varredura de portas desenvolvido em Python. Ele permite identificar portas abertas, fechadas ou filtradas em um endereço IP específico, com opções para varredura de uma única porta ou um intervalo de portas.
 
 Pré-requisitos
@@ -23,12 +24,14 @@ Execute o script install_dependencies.sh para instalar as dependências necessá
 bash
 Copy code
 ./install_dependencies.sh
+
+
 Uso
 Após a instalação, o script PortScan.py pode ser utilizado diretamente do terminal como um comando:
 
-css
 Copy code
-portscan <endereço IP> [--port <número da porta>] [--startport <porta inicial>] [--endport <porta final>] [-v]
+portscan <endereço IP> --port <número da porta> --startport <porta inicial> --endport <porta final> -v
+
 Opções de Comando:
 <endereço IP>: Endereço IP do alvo para a varredura de portas.
 --port <número da porta>: Especifica uma única porta para varrer (opcional).
