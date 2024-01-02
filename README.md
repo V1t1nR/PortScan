@@ -13,6 +13,7 @@ Clone o repositório:
 bash
 Copy code
 git clone https://github.com/V1t1nR/PortScan.git
+
 cd seu_repositorio
 Torne o script install_dependencies.sh executável:
 
