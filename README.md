@@ -10,20 +10,16 @@ Para instalar as dependências e configurar o ambiente, siga as instruções aba
 
 Clone o repositório:
 
-bash
-Copy code
 git clone https://github.com/V1t1nR/PortScan.git
 
 cd seu_repositorio
+
 Torne o script install_dependencies.sh executável:
 
-bash
-Copy code
 chmod +x install_dependencies.sh
+
 Execute o script install_dependencies.sh para instalar as dependências necessárias:
 
-bash
-Copy code
 ./install_dependencies.sh
 
 
