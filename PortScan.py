@@ -72,7 +72,7 @@ def get_service_name(port, check_service):
     else:
         return 'Desconhecido'
 
-def scan_ports(ip, ports, verbose, verbose_summary, version_check):
+def scan_ports(ip, ports, verbose, version_check):
     """Realiza a varredura das portas e imprime os resultados."""
     abertas, fechadas, filtradas = 0, 0, 0
     portas_abertas_info = []
@@ -98,11 +98,10 @@ def scan_ports(ip, ports, verbose, verbose_summary, version_check):
         else:
             filtradas += 1
 
-    if verbose_summary:
-        print(f"\nResumo: {abertas} portas abertas, {fechadas} portas fechadas, {filtradas} portas filtradas.")
-        for port, service, version in portas_abertas_info:
-            version_info = version if version_check else 'Não verificado'
-            print(f"Porta Aberta: {port}/tcp ({service}) - Versão: {version_info}")
+    print(f"\nResumo: {abertas} portas abertas, {fechadas} portas fechadas, {filtradas} portas filtradas.")
+    for port, service, version in portas_abertas_info:
+        version_info = version if version_check else 'Não verificado'
+        print(f"Porta Aberta: {port}/tcp ({service}) - Versão: {version_info}")
 
 if __name__ == "__main__":
     print_banner()
@@ -112,8 +111,4 @@ if __name__ == "__main__":
     parser.add_argument("--startport", type=int, default=1, help="Número da porta inicial (padrão: 1)")
     parser.add_argument("--endport", type=int, default=1024, help="Número da porta final (padrão: 1024)")
     parser.add_argument("-v", "--verbose", action="store_true", help="Ativa a varredura detalhada")
-    parser.add_argument("--verbose-summary", action="store_true", help="Exibe um resumo da varredura ao invés de detalhar cada porta")
     parser.add_argument("--version", action="store_true", help="Tenta identificar a versão do serviço nas portas abertas")
-
-    args = parser.parse_args()
-    scan_ports(args.ip, range(args.startport, args.endport + 1) if not args.port else [args.port], args.verbose, args.verbose_summary, args.version)
