@@ -89,6 +89,7 @@ def scan_ports(ip, ports, verbose, version_check):
         if verbose:
             rtt_info = f'{rtt:.2f}s' if rtt is not None else 'N/A'
             print(f"{port}/tcp\t{status}\t{service}\t{rtt_info}\t{version_info}")
+            
 
         if status == 'Aberto':
             abertas += 1
