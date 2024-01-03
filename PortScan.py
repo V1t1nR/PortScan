@@ -7,6 +7,7 @@ import time
 import argparse
 
 # Configura o Scapy para não exibir avisos
+
 logging.getLogger("scapy.runtime").setLevel(logging.ERROR)
 
 def print_banner():
