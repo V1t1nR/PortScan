@@ -72,24 +72,23 @@ def get_service_name(port, check_service):
     else:
         return 'Desconhecido'
 
-def scan_ports(ip, start_port, end_port, verbose, version_check):
+def scan_ports(ip, ports, verbose, version_check):
     """Realiza a varredura das portas e imprime os resultados."""
     abertas, fechadas, filtradas = 0, 0, 0
     portas_abertas_info = []
+
     print(f"\nIniciando varredura no ip: {ip}")
-
-    header_format = "{:<8} {:<8} {:<12} {:<8} {}"
     if verbose:
-        print(header_format.format("PORTA", "ESTADO", "SERVIÇO", "RTT", "VERSÃO"))
+        print("PORTA\tESTADO\tSERVIÇO\tRTT\tVERSÃO")
 
-    for port in range(start_port, end_port + 1):
+    for port in ports:
         status, check_service, rtt, version = scan_port_scapy(ip, port, verbose=verbose)
         service = get_service_name(port, check_service)
         version_info = version if version_check else 'Não verificado'
 
         if verbose:
             rtt_info = f'{rtt:.2f}s' if rtt is not None else 'N/A'
-            print(header_format.format(f"{port}/tcp", status, service, rtt_info, version_info))
+            print(f"{port}/tcp\t{status}\t{service}\t{rtt_info}\t{version_info}")
 
         if status == 'Aberto':
             abertas += 1
@@ -108,6 +107,7 @@ if __name__ == "__main__":
     print_banner()
     parser = argparse.ArgumentParser(description="Varredura de Portas com interface estilo RustScan.")
     parser.add_argument("ip", help="Endereço IP para escanear")
+    parser.add_argument("-p", "--port", type=int, help="Número da porta específica para escanear")
     parser.add_argument("--startport", type=int, default=1, help="Número da porta inicial (padrão: 1)")
     parser.add_argument("--endport", type=int, default=1024, help="Número da porta final (padrão: 1024)")
     parser.add_argument("-v", "--verbose", action="store_true", help="Ativa a varredura detalhada")
@@ -115,4 +115,9 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    scan_ports(args.ip, args.startport, args.endport, args.verbose, args.version)
+    if args.port:
+        ports = [args.port]
+    else:
+        ports = range(args.startport, args.endport + 1)
+
+    scan_ports(args.ip, ports, args.verbose, args.version)
