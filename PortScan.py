@@ -103,7 +103,6 @@ def scan_ports(ip, ports, verbose, version_check):
     for port, service, version in portas_abertas_info:
         version_info = version if version_check else 'Não verificado'
         print(f"Porta Aberta: {port}/tcp ({service}) - Versão: {version_info}")
-        
 
 if __name__ == "__main__":
     print_banner()
