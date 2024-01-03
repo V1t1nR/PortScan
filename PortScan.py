@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+git #!/usr/bin/env python3
 
 import socket
 import logging
@@ -121,3 +121,4 @@ if __name__ == "__main__":
         ports = range(args.startport, args.endport + 1)
 
     scan_ports(args.ip, ports, args.verbose, args.version)
+    
