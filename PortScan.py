@@ -89,7 +89,7 @@ def scan_ports(ip, ports, verbose, version_check):
         if verbose:
             rtt_info = f'{rtt:.2f}s' if rtt is not None else 'N/A'
             print(f"{port}/tcp\t{status}\t{service}\t{rtt_info}\t{version_info}")
-            
+
 
         if status == 'Aberto':
             abertas += 1
@@ -113,3 +113,4 @@ if __name__ == "__main__":
     parser.add_argument("--endport", type=int, default=1024, help="Número da porta final (padrão: 1024)")
     parser.add_argument("-v", "--verbose", action="store_true", help="Ativa a varredura detalhada")
     parser.add_argument("--version", action="store_true", help="Tenta identificar a versão do serviço nas portas abertas")
+    
