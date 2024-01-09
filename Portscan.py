@@ -55,7 +55,6 @@ def scan_port_scapy(ip, port, timeout=2, retries=1, version_check=False):
             logging.error(f"Erro ao escanear a porta {port}: {e}")
     return 'Filtrado', True, None, None
 
-
 def get_service_name(port, check_service):
     """Obtém o nome do serviço para a porta especificada, se possível."""
     if check_service:
